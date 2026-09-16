@@ -202,7 +202,7 @@ export default function App() {
 
                 {/* About Me summary integrated right under name and title */}
                 <p className="text-base sm:text-lg text-[#374151] leading-relaxed max-w-xl font-normal">
-                  I am a Data Analyst &amp; AI Engineer Trainee passionate about using data to solve complex problems. Founder of Awl Code.
+                 Transforming raw data into actionable insights and automated solutions, with expertise ranging from cleaning multi-million record datasets to building end-to-end administrative systems.
                 </p>
 
                 {/* Tagline Box with subtle editorial accent */}
