@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+  <rect width="600" height="700" fill="#E2ECE9"/>
+  <!-- Decorative background subtle data grid -->
+  <g stroke="#C8DFDB" stroke-width="1" opacity="0.6">
+    <line x1="100" y1="0" x2="100" y2="700"/>
+    <line x1="200" y1="0" x2="200" y2="700"/>
+    <line x1="300" y1="0" x2="300" y2="700"/>
+    <line x1="400" y1="0" x2="400" y2="700"/>
+    <line x1="500" y1="0" x2="500" y2="700"/>
+    <line x1="0" y1="100" x2="600" y2="100"/>
+    <line x1="0" y1="200" x2="600" y2="200"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="400" x2="600" y2="400"/>
+    <line x1="0" y1="500" x2="600" y2="500"/>
+    <line x1="0" y1="600" x2="600" y2="600"/>
+  </g>
+  
+  <!-- Backdrop circle -->
+  <circle cx="300" cy="270" r="160" fill="#66A3BF" opacity="0.25"/>
+  
+  <!-- Shoulders / Blazer -->
+  <path d="M140 590 C150 430, 230 400, 300 400 C370 400, 450 430, 460 590 L140 590 Z" fill="#3368A0"/>
+  
+  <!-- Inner shirt collar -->
+  <polygon points="260,400 340,400 300,480" fill="#F2EFE7"/>
+  <polygon points="288,480 312,480 305,590 295,590" fill="#66A3BF"/>
+
+  <!-- Neck -->
+  <rect x="270" y="330" width="60" height="80" fill="#E6BA95" rx="10"/>
+
+  <!-- Head -->
+  <ellipse cx="300" cy="260" rx="90" ry="110" fill="#F5CBA7"/>
+
+  <!-- Hair -->
+  <path d="M210 240 C210 150, 390 150, 390 240 C380 180, 360 160, 300 160 C240 160, 220 180, 210 240 Z" fill="#2C3E50"/>
+  <path d="M210 230 C200 280, 205 290, 215 290 C215 230, 225 210, 240 200 Z" fill="#2C3E50"/>
+  <path d="M390 230 C400 280, 395 290, 385 290 C385 230, 375 210, 360 200 Z" fill="#2C3E50"/>
+
+  <!-- Glasses -->
+  <rect x="230" y="240" width="55" height="38" rx="8" fill="none" stroke="#1F2937" stroke-width="4"/>
+  <rect x="315" y="240" width="55" height="38" rx="8" fill="none" stroke="#1F2937" stroke-width="4"/>
+  <line x1="285" y1="255" x2="315" y2="255" stroke="#1F2937" stroke-width="4"/>
+  <line x1="210" y1="252" x2="230" y2="252" stroke="#1F2937" stroke-width="3"/>
+  <line x1="370" y1="252" x2="390" y2="252" stroke="#1F2937" stroke-width="3"/>
+
+  <!-- Eyes behind glasses -->
+  <circle cx="258" cy="258" r="6" fill="#1F2937"/>
+  <circle cx="342" cy="258" r="6" fill="#1F2937"/>
+  <circle cx="260" cy="256" r="2" fill="#FFFFFF"/>
+  <circle cx="344" cy="256" r="2" fill="#FFFFFF"/>
+
+  <!-- Smile -->
+  <path d="M275 310 Q300 330 325 310" fill="none" stroke="#A9684C" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Analyst Badge Overlay at bottom -->
+  <rect x="180" y="610" width="240" height="44" rx="8" fill="#3368A0" stroke="#C8DFDB" stroke-width="1.5"/>
+  <text x="300" y="638" font-family="sans-serif" font-size="15" font-weight="700" fill="#F2EFE7" text-anchor="middle" letter-spacing="1">AHMED YASSER</text>
+</svg>

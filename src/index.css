@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-blue: #3368A0;
+    --secondary-blue: #66A3BF;
+    --light-panel: #C8DFDB;
+    --bg-main: #F2EFE7;
+    --text-primary: #1F2937;
+    --text-muted: #4B5563;
+  }
+
+  html {
+    background-color: #F2EFE7;
+    color: #1F2937;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F2EFE7;
+    color: #1F2937;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom interactive hover scaling for buttons and project cards */
+.interactive-hover {
+  transition: transform 0.22s ease-in-out, box-shadow 0.22s ease-in-out;
+}
+
+.interactive-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Subtle, elegant card shadow */
+.card-subtle {
+  box-shadow: 0 2px 8px -2px rgba(51, 104, 160, 0.07), 0 1px 3px -1px rgba(0, 0, 0, 0.04);
+}
+
+.card-subtle:hover {
+  box-shadow: 0 10px 24px -4px rgba(51, 104, 160, 0.12), 0 3px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth fade-in on scroll effect */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
