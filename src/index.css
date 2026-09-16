@@ -32,27 +32,28 @@
 
 /* Custom interactive hover scaling for buttons and project cards */
 .interactive-hover {
-  transition: transform 0.22s ease-in-out, box-shadow 0.22s ease-in-out;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
 .interactive-hover:hover {
-  transform: scale(1.03);
+  transform: translateY(-2px);
 }
 
 /* Subtle, elegant card shadow */
 .card-subtle {
-  box-shadow: 0 2px 8px -2px rgba(51, 104, 160, 0.07), 0 1px 3px -1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px -2px rgba(51, 104, 160, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
 .card-subtle:hover {
-  box-shadow: 0 10px 24px -4px rgba(51, 104, 160, 0.12), 0 3px 8px -2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 30px -4px rgba(51, 104, 160, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
 }
 
 /* Smooth fade-in on scroll effect */
 .fade-in-section {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateY(14px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 

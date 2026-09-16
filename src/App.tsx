@@ -10,7 +10,14 @@ import {
   Menu,
   X,
   GraduationCap,
-  Award
+  Award,
+  Code2,
+  Database,
+  BarChart3,
+  FileSpreadsheet,
+  Layers,
+  Sliders,
+  ArrowUpRight
 } from 'lucide-react';
 
 export default function App() {
@@ -27,7 +34,7 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
     const sections = document.querySelectorAll('.fade-in-section');
@@ -52,13 +59,37 @@ export default function App() {
     { label: 'Contact', href: '#contact' },
   ];
 
-  const skills = [
-    'Python (Pandas, NumPy)',
-    'SQL',
-    'Power BI',
-    'Excel',
-    'MySQL',
-    'Data Cleaning & Preprocessing'
+  const skillItems = [
+    {
+      name: 'Python (Pandas, NumPy)',
+      category: 'Data Manipulation',
+      icon: Code2,
+    },
+    {
+      name: 'SQL',
+      category: 'Relational Queries',
+      icon: Database,
+    },
+    {
+      name: 'Power BI',
+      category: 'Modeling & DAX',
+      icon: BarChart3,
+    },
+    {
+      name: 'Excel',
+      category: 'Advanced Analytics',
+      icon: FileSpreadsheet,
+    },
+    {
+      name: 'MySQL',
+      category: 'Database Architecture',
+      icon: Layers,
+    },
+    {
+      name: 'Data Cleaning & Preprocessing',
+      category: 'Pipeline & ETL',
+      icon: Sliders,
+    },
   ];
 
   return (
@@ -70,23 +101,33 @@ export default function App() {
           ========================================================================= */}
       <header 
         id="navbar"
-        className="fixed top-0 left-0 right-0 z-50 bg-[#3368A0] text-[#F2EFE7] border-b border-[#3368A0] shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#3368A0] text-[#F2EFE7] border-b border-[#2b5685] shadow-xs"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a 
             href="#hero" 
-            className="font-bold text-lg text-[#F2EFE7] hover:text-white transition-colors tracking-tight"
+            className="flex items-center gap-3 group"
           >
-            Ahmed Yasser
+            <div className="w-8 h-8 rounded-[8px] bg-[#2b5685] border border-[#66A3BF]/50 flex items-center justify-center font-mono font-bold text-sm text-[#F2EFE7] group-hover:border-white transition-colors">
+              AY
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="font-bold text-base tracking-tight text-[#F2EFE7] group-hover:text-white transition-colors">
+                Ahmed Yasser
+              </span>
+              <span className="text-[11px] font-mono text-[#C8DFDB] leading-none">
+                Data Analyst
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-[8px] text-sm font-medium text-[#F2EFE7] hover:bg-[#66A3BF]/40 hover:text-white transition-all"
+                className="px-3.5 py-1.5 rounded-[8px] text-xs font-mono font-medium uppercase tracking-wider text-[#F2EFE7] hover:bg-[#2b5685] hover:text-white transition-all"
               >
                 {link.label}
               </a>
@@ -98,7 +139,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#F2EFE7] hover:text-white focus:outline-hidden"
+              className="p-2 text-[#F2EFE7] hover:text-white focus:outline-hidden rounded-[8px]"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -108,13 +149,13 @@ export default function App() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#3368A0] border-t border-[#66A3BF]/40 px-4 pt-2 pb-4 space-y-1 shadow-md">
+          <div className="md:hidden bg-[#2b5685] border-t border-[#66A3BF]/40 px-4 pt-3 pb-5 space-y-1 shadow-lg">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-[8px] text-sm font-medium text-[#F2EFE7] hover:bg-[#66A3BF]/40"
+                className="block px-3 py-2 rounded-[8px] text-xs font-mono uppercase tracking-wider font-medium text-[#F2EFE7] hover:bg-[#3368A0]"
               >
                 {link.label}
               </a>
@@ -128,65 +169,97 @@ export default function App() {
 
         {/* =========================================================================
             2. HERO SECTION (Background: #F2EFE7)
-            Left: Profile picture using user-attached image (retouch_2026090902121057.jpg.jpeg)
-            Right: "Ahmed Yasser, Data Analyst"
-                   About Me text integrated directly under name and title
-                   Tagline: "Unlocking Insights. Driving Results."
-                   Button: "View Projects"
+            Elevated, editorial profile presentation:
+            - Left: Neatly cropped portrait with crisp architectural backing frame
+            - Right: Name, Title, About Me summary, Tagline, Primary action button
             ========================================================================= */}
         <section 
           id="hero" 
-          className="bg-[#F2EFE7] py-20 sm:py-24 md:py-28 border-b border-[#C8DFDB] fade-in-section"
+          className="bg-[#F2EFE7] py-20 sm:py-24 md:py-32 border-b border-[#C8DFDB] fade-in-section"
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+            <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-16">
               
-              {/* Left Column: Neatly cropped profile picture with subtle 8px border-radius */}
-              <div className="w-full md:w-5/12 flex justify-center md:justify-start">
-                <div className="w-[280px] sm:w-[320px] md:w-[350px] aspect-square overflow-hidden rounded-[8px] border border-[#C8DFDB] bg-white card-subtle">
-                  <img
-                    src="retouch_2026090902121057.jpg.jpeg"
-                    alt="Ahmed Yasser"
-                    className="w-full h-full object-cover object-center rounded-[8px]"
-                    onError={(e) => {
-                      e.currentTarget.src = "placeholder-profile.jpg";
-                    }}
-                  />
+              {/* Left Column: Identity, Title, About Me, Tagline & CTA */}
+              <div className="w-full md:w-7/12 text-left space-y-6">
+                
+                {/* Role Pill */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[6px] bg-white border border-[#C8DFDB] card-subtle">
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#3368A0]">
+                    Data Analyst &amp; AI Engineer Trainee
+                  </span>
                 </div>
-              </div>
 
-              {/* Right Column: Name, Title, About Me, Tagline, Action */}
-              <div className="w-full md:w-7/12 text-left">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1F2937] tracking-tight leading-[1.1] mb-2">
+                {/* Main Name Heading */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1F2937] tracking-tight leading-[1.08]">
                   Ahmed Yasser
                 </h1>
 
-                <div className="text-2xl sm:text-3xl font-semibold text-[#3368A0] mb-5">
+                {/* Subtitle / Role Designation */}
+                <div className="text-xl sm:text-2xl font-bold text-[#3368A0]">
                   Data Analyst
                 </div>
 
-                {/* About Me summary integrated directly under name and title */}
-                <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed mb-6 max-w-xl">
+                {/* About Me summary integrated right under name and title */}
+                <p className="text-base sm:text-lg text-[#374151] leading-relaxed max-w-xl font-normal">
                   I am a Data Analyst &amp; AI Engineer Trainee passionate about using data to solve complex problems. Founder of Awl Code.
                 </p>
 
-                {/* Tagline */}
-                <div className="border-l-2 border-[#3368A0] pl-4 py-1 mb-8">
-                  <p className="text-lg sm:text-xl font-medium text-[#1F2937] italic">
+                {/* Tagline Box with subtle editorial accent */}
+                <div className="border-l-3 border-[#3368A0] pl-4 py-1.5 bg-white/60 rounded-r-[8px] border-y border-r border-[#C8DFDB]/60 max-w-lg">
+                  <p className="text-base sm:text-lg font-medium text-[#1F2937] italic">
                     &ldquo;Unlocking Insights. Driving Results.&rdquo;
                   </p>
                 </div>
 
-                {/* Primary CTA Button */}
-                <div>
+                {/* Action Buttons */}
+                <div className="pt-2 flex flex-wrap items-center gap-4">
                   <a
                     href="#projects"
                     id="hero-view-projects-btn"
-                    className="interactive-hover inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[8px] bg-[#3368A0] text-[#F2EFE7] font-semibold text-sm tracking-wide shadow-sm hover:bg-[#2b5685] transition-all"
+                    className="interactive-hover inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[8px] bg-[#3368A0] text-[#F2EFE7] font-semibold text-sm tracking-wide shadow-xs hover:bg-[#2b5685] transition-all"
                   >
                     <span>View Projects</span>
                     <ChevronRight className="w-4 h-4" />
                   </a>
+
+                  <a
+                    href="#contact"
+                    className="interactive-hover inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[8px] bg-white text-[#3368A0] border border-[#C8DFDB] font-semibold text-sm tracking-wide card-subtle hover:bg-[#F2EFE7] transition-all"
+                  >
+                    <span>Contact Info</span>
+                  </a>
+                </div>
+
+              </div>
+
+              {/* Right Column: Architectural Headshot Frame */}
+              <div className="w-full md:w-5/12 flex justify-center md:justify-end">
+                <div className="relative group">
+                  {/* Subtle offset geometric backing in #C8DFDB for visual depth */}
+                  <div className="absolute -inset-2 rounded-[8px] bg-[#C8DFDB] transform rotate-1 opacity-70 transition-transform group-hover:rotate-0" />
+                  
+                  {/* Main Portrait Card */}
+                  <div className="relative w-[280px] sm:w-[320px] md:w-[340px] aspect-[4/5] rounded-[8px] overflow-hidden border border-[#C8DFDB] bg-white card-subtle shadow-md">
+                    <img
+                      src="retouch_2026090902121057.jpg.jpeg"
+                      alt="Ahmed Yasser"
+                      className="w-full h-full object-cover object-top rounded-[8px]"
+                      onError={(e) => {
+                        e.currentTarget.src = "placeholder-profile.jpg";
+                      }}
+                    />
+
+                    {/* Clean contextual bottom bar */}
+                    <div className="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-xs border-t border-[#C8DFDB] px-4 py-2.5 flex items-center justify-between">
+                      <span className="font-mono text-xs font-semibold text-[#3368A0]">
+                        Ahmed Yasser
+                      </span>
+                      <span className="font-mono text-[11px] text-[#4B5563]">
+                        Beni Suef, Egypt
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -196,76 +269,108 @@ export default function App() {
 
         {/* =========================================================================
             3. EXPERIENCE & EDUCATION (Background: #F2EFE7)
-            Clean, structured card layout with subtle shadows and 1px #C8DFDB borders
+            Pristine dual-card layout with high-contrast typography and subtle elevation
             ========================================================================= */}
         <section 
           id="experience" 
           className="bg-[#F2EFE7] py-20 sm:py-24 border-b border-[#C8DFDB] fade-in-section"
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937] tracking-tight mb-10">
-              Experience &amp; Education
-            </h2>
+            
+            {/* Section Header */}
+            <div className="mb-12">
+              <div className="font-mono text-xs uppercase tracking-widest text-[#3368A0] font-bold mb-2">
+                Background &amp; Credentials
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#1F2937] tracking-tight">
+                Experience &amp; Education
+              </h2>
+              <div className="w-12 h-1 bg-[#3368A0] mt-3 rounded-full" />
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Education Card */}
-              <div className="bg-white p-7 sm:p-9 rounded-[8px] border border-[#C8DFDB] card-subtle">
-                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-[#C8DFDB]">
-                  <div className="p-2.5 rounded-[8px] bg-[#3368A0] text-[#F2EFE7]">
-                    <GraduationCap className="w-5 h-5" />
+              <div className="bg-white p-8 sm:p-10 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3.5 mb-8 pb-4 border-b border-[#C8DFDB]">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#3368A0] text-[#F2EFE7] flex items-center justify-center shadow-xs">
+                      <GraduationCap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1F2937]">Education</h3>
+                      <p className="text-xs font-mono text-[#4B5563]">Academic Foundation</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-[#1F2937]">Education</h3>
+
+                  <div className="space-y-6">
+                    {/* Degree */}
+                    <div className="border-l-3 border-[#3368A0] pl-4.5 py-0.5">
+                      <div className="font-bold text-base sm:text-lg text-[#1F2937] leading-snug">
+                        Bachelor&apos;s student in Information Systems
+                      </div>
+                      <div className="text-sm text-[#4B5563] mt-1.5">
+                        Faculty of Computers and Artificial Intelligence, Beni Suef University
+                      </div>
+                    </div>
+
+                    {/* Track */}
+                    <div className="border-l-3 border-[#66A3BF] pl-4.5 py-0.5">
+                      <div className="font-bold text-base sm:text-lg text-[#1F2937] leading-snug">
+                        DEPI Data Analysis Track
+                      </div>
+                      <div className="text-sm text-[#4B5563] mt-1.5">
+                        Digital Egypt Pioneers Initiative
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="border-l-2 border-[#3368A0] pl-4">
-                    <div className="font-bold text-base text-[#1F2937]">
-                      Bachelor&apos;s student in Information Systems
-                    </div>
-                    <div className="text-sm text-[#4B5563] mt-1">
-                      Faculty of Computers and Artificial Intelligence, Beni Suef University
-                    </div>
-                  </div>
-
-                  <div className="border-l-2 border-[#66A3BF] pl-4">
-                    <div className="font-bold text-base text-[#1F2937]">
-                      DEPI Data Analysis Track
-                    </div>
-                    <div className="text-sm text-[#4B5563] mt-1">
-                      Digital Egypt Pioneers Initiative
-                    </div>
-                  </div>
+                <div className="mt-8 pt-4 border-t border-[#C8DFDB]/60 flex items-center justify-between">
+                  <span className="font-mono text-xs font-medium text-[#3368A0]">Information Systems</span>
+                  <span className="font-mono text-xs text-[#4B5563]">In Progress</span>
                 </div>
               </div>
 
               {/* Certifications Card */}
-              <div className="bg-white p-7 sm:p-9 rounded-[8px] border border-[#C8DFDB] card-subtle">
-                <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-[#C8DFDB]">
-                  <div className="p-2.5 rounded-[8px] bg-[#3368A0] text-[#F2EFE7]">
-                    <Award className="w-5 h-5" />
+              <div className="bg-white p-8 sm:p-10 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3.5 mb-8 pb-4 border-b border-[#C8DFDB]">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#3368A0] text-[#F2EFE7] flex items-center justify-center shadow-xs">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1F2937]">Certifications</h3>
+                      <p className="text-xs font-mono text-[#4B5563]">Professional Training</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-[#1F2937]">Certifications</h3>
+
+                  <div className="space-y-6">
+                    {/* Cert 1 */}
+                    <div className="border-l-3 border-[#3368A0] pl-4.5 py-0.5">
+                      <div className="font-bold text-base sm:text-lg text-[#1F2937] leading-snug">
+                        IBM Data Fundamentals
+                      </div>
+                      <div className="text-sm text-[#4B5563] mt-1.5">
+                        Professional Certified Credential
+                      </div>
+                    </div>
+
+                    {/* Cert 2 */}
+                    <div className="border-l-3 border-[#66A3BF] pl-4.5 py-0.5">
+                      <div className="font-bold text-base sm:text-lg text-[#1F2937] leading-snug">
+                        ITIDA/NTI 120-Hour Summer Training
+                      </div>
+                      <div className="text-sm text-[#4B5563] mt-1.5">
+                        Intensive practical technical training program
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="border-l-2 border-[#3368A0] pl-4">
-                    <div className="font-bold text-base text-[#1F2937]">
-                      IBM Data Fundamentals
-                    </div>
-                    <div className="text-sm text-[#4B5563] mt-1">
-                      Professional Certified Credential
-                    </div>
-                  </div>
-
-                  <div className="border-l-2 border-[#66A3BF] pl-4">
-                    <div className="font-bold text-base text-[#1F2937]">
-                      ITIDA/NTI 120-Hour Summer Training
-                    </div>
-                    <div className="text-sm text-[#4B5563] mt-1">
-                      Intensive practical technical training program
-                    </div>
-                  </div>
+                <div className="mt-8 pt-4 border-t border-[#C8DFDB]/60 flex items-center justify-between">
+                  <span className="font-mono text-xs font-medium text-[#3368A0]">Verified Credentials</span>
+                  <span className="font-mono text-xs text-[#4B5563]">120+ Hours</span>
                 </div>
               </div>
 
@@ -274,81 +379,132 @@ export default function App() {
         </section>
 
         {/* =========================================================================
-            4. SKILLS (Light Panel: #C8DFDB)
-            Clean grid layout. NO dots and NO numbering.
+            4. SKILLS SECTION
+            Elevated data-centric grid.
+            NO dots and NO slash numbering.
             ========================================================================= */}
         <section 
           id="skills" 
-          className="bg-[#C8DFDB] py-20 sm:py-24 border-b border-[#C8DFDB] fade-in-section"
+          className="bg-[#F2EFE7] py-20 sm:py-24 border-b border-[#C8DFDB] fade-in-section"
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937] tracking-tight mb-10">
-              Skills
-            </h2>
-
-            {/* Clean grid layout without dots or decorative numbering */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {skills.map((skill) => (
-                <div
-                  key={skill}
-                  className="interactive-hover bg-[#F2EFE7] p-6 rounded-[8px] border border-[#C8DFDB] card-subtle"
-                >
-                  <div className="text-base font-semibold text-[#1F2937]">
-                    {skill}
-                  </div>
-                </div>
-              ))}
+            
+            {/* Section Header */}
+            <div className="mb-12">
+              <div className="font-mono text-xs uppercase tracking-widest text-[#3368A0] font-bold mb-2">
+                Technical Toolkit
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#1F2937] tracking-tight">
+                Skills
+              </h2>
+              <div className="w-12 h-1 bg-[#3368A0] mt-3 rounded-full" />
             </div>
+
+            {/* Structured Card Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skillItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <div
+                    key={item.name}
+                    className="interactive-hover bg-white p-6 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-10 h-10 rounded-[8px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] flex items-center justify-center">
+                          <IconComponent className="w-5 h-5 text-[#3368A0]" />
+                        </div>
+                        <span className="font-mono text-[11px] font-semibold text-[#66A3BF] uppercase tracking-wider">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      <div className="text-lg font-bold text-[#1F2937] tracking-tight">
+                        {item.name}
+                      </div>
+                    </div>
+
+                    <div className="mt-5 pt-3 border-t border-[#C8DFDB]/60 flex items-center justify-between text-xs font-mono text-[#4B5563]">
+                      <span>Proficiency</span>
+                      <span className="text-[#3368A0] font-semibold">Core Focus</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
         </section>
 
         {/* =========================================================================
             5. PROJECTS (Background: #F2EFE7)
-            Grid for the two projects with updated workflow and background descriptions
+            Grid for the TWO projects formatted as executive analytical case studies
             ========================================================================= */}
         <section 
           id="projects" 
-          className="bg-[#F2EFE7] py-20 sm:py-24 md:py-28 border-b border-[#C8DFDB] fade-in-section"
+          className="bg-[#F2EFE7] py-20 sm:py-24 md:py-32 border-b border-[#C8DFDB] fade-in-section"
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2937] tracking-tight mb-10">
-              Projects
-            </h2>
+            
+            {/* Section Header */}
+            <div className="mb-12">
+              <div className="font-mono text-xs uppercase tracking-widest text-[#3368A0] font-bold mb-2">
+                Featured Work
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#1F2937] tracking-tight">
+                Projects
+              </h2>
+              <div className="w-12 h-1 bg-[#3368A0] mt-3 rounded-full" />
+            </div>
 
             {/* Grid for exactly TWO projects */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 sm:gap-9">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
               
               {/* Project 1: Fawry Transactions Data Analysis */}
-              <div className="interactive-hover bg-white p-7 sm:p-9 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
+              <div className="interactive-hover bg-white p-8 sm:p-10 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#1F2937] tracking-tight mb-3">
+                  
+                  {/* Category Pill */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-[6px] bg-[#F2EFE7] text-[#3368A0] border border-[#C8DFDB]">
+                      Financial Analytics
+                    </span>
+                    <span className="font-mono text-xs text-[#66A3BF] font-semibold">
+                      2M+ Records
+                    </span>
+                  </div>
+
+                  {/* Project Title */}
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1F2937] tracking-tight mb-4 leading-tight">
                     Fawry Transactions Data Analysis
                   </h3>
 
-                  {/* Expanded description highlighting workflow */}
-                  <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed mb-6">
+                  {/* Expanded Description */}
+                  <p className="text-sm sm:text-base text-[#374151] leading-relaxed mb-6">
                     Cleaned a massive dataset of 2M+ records using Python, and utilized Power BI for advanced data modeling and interactive data visualization.
                   </p>
 
-                  <div className="bg-[#F2EFE7] p-4 rounded-[8px] border border-[#C8DFDB] mb-6">
-                    <div className="text-xs uppercase tracking-wider font-bold text-[#3368A0] mb-1.5">
-                      Highlights
+                  {/* Highlights Panel */}
+                  <div className="bg-[#F2EFE7] p-5 rounded-[8px] border border-[#C8DFDB] mb-8">
+                    <div className="font-mono text-xs uppercase tracking-wider font-bold text-[#3368A0] mb-2 flex items-center gap-2">
+                      <span>Highlights</span>
                     </div>
-                    <div className="text-sm text-[#1F2937] leading-relaxed">
+                    <div className="text-sm text-[#1F2937] leading-relaxed font-medium">
                       Cleaned dataset, complex DAX metrics.
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#C8DFDB]">
-                  <div className="text-xs uppercase tracking-wider font-semibold text-[#4B5563] mb-2.5">
+                {/* Tech Stack & Footer */}
+                <div className="pt-5 border-t border-[#C8DFDB]">
+                  <div className="font-mono text-xs uppercase tracking-wider font-semibold text-[#4B5563] mb-3">
                     Tech Stack
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className="font-mono text-xs px-3 py-1 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-medium">
+                    <span className="font-mono text-xs px-3.5 py-1.5 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-semibold">
                       Python
                     </span>
-                    <span className="font-mono text-xs px-3 py-1 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-medium">
+                    <span className="font-mono text-xs px-3.5 py-1.5 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-semibold">
                       Power BI
                     </span>
                   </div>
@@ -356,36 +512,50 @@ export default function App() {
               </div>
 
               {/* Project 2: Al-Abqari School Management System */}
-              <div className="interactive-hover bg-white p-7 sm:p-9 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
+              <div className="interactive-hover bg-white p-8 sm:p-10 rounded-[8px] border border-[#C8DFDB] card-subtle flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#1F2937] tracking-tight mb-3">
+                  
+                  {/* Category Pill */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-[6px] bg-[#F2EFE7] text-[#3368A0] border border-[#C8DFDB]">
+                      System Automation
+                    </span>
+                    <span className="font-mono text-xs text-[#66A3BF] font-semibold">
+                      Web Scraping &amp; VBA
+                    </span>
+                  </div>
+
+                  {/* Project Title */}
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#1F2937] tracking-tight mb-4 leading-tight">
                     Al-Abqari School Management System
                   </h3>
 
-                  {/* Updated with background problem and solution */}
-                  <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed mb-6">
+                  {/* Expanded Description */}
+                  <p className="text-sm sm:text-base text-[#374151] leading-relaxed mb-6">
                     School administrators were struggling to efficiently retrieve student and teacher info from the official website. I used Selenium and Excel VBA to web scrape the data directly into the program. The app now supports and automates every feature available on the official school site.
                   </p>
 
-                  <div className="bg-[#F2EFE7] p-4 rounded-[8px] border border-[#C8DFDB] mb-6">
-                    <div className="text-xs uppercase tracking-wider font-bold text-[#3368A0] mb-1.5">
-                      Highlights
+                  {/* Highlights Panel */}
+                  <div className="bg-[#F2EFE7] p-5 rounded-[8px] border border-[#C8DFDB] mb-8">
+                    <div className="font-mono text-xs uppercase tracking-wider font-bold text-[#3368A0] mb-2 flex items-center gap-2">
+                      <span>Highlights</span>
                     </div>
-                    <div className="text-sm text-[#1F2937] leading-relaxed">
+                    <div className="text-sm text-[#1F2937] leading-relaxed font-medium">
                       Automated form submissions.
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#C8DFDB]">
-                  <div className="text-xs uppercase tracking-wider font-semibold text-[#4B5563] mb-2.5">
+                {/* Tech Stack & Footer */}
+                <div className="pt-5 border-t border-[#C8DFDB]">
+                  <div className="font-mono text-xs uppercase tracking-wider font-semibold text-[#4B5563] mb-3">
                     Tech Stack
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className="font-mono text-xs px-3 py-1 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-medium">
+                    <span className="font-mono text-xs px-3.5 py-1.5 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-semibold">
                       Excel VBA
                     </span>
-                    <span className="font-mono text-xs px-3 py-1 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-medium">
+                    <span className="font-mono text-xs px-3.5 py-1.5 rounded-[6px] bg-[#F2EFE7] border border-[#C8DFDB] text-[#3368A0] font-semibold">
                       Selenium
                     </span>
                   </div>
@@ -398,30 +568,39 @@ export default function App() {
 
         {/* =========================================================================
             6. CONTACT (Background: #3368A0, Text/Icons: #F2EFE7)
+            Elevated closing card with copy toast and external profile links
             ========================================================================= */}
         <footer 
           id="contact" 
-          className="bg-[#3368A0] text-[#F2EFE7] py-20 sm:py-24 border-t border-[#3368A0]"
+          className="bg-[#3368A0] text-[#F2EFE7] py-20 sm:py-24 border-t border-[#2b5685]"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#F2EFE7] tracking-tight mb-10">
-              Contact
-            </h2>
+            
+            <div className="mb-10">
+              <div className="font-mono text-xs uppercase tracking-widest text-[#C8DFDB] font-bold mb-2">
+                Let&apos;s Connect
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#F2EFE7] tracking-tight">
+                Contact
+              </h2>
+              <div className="w-12 h-1 bg-[#66A3BF] mt-3 rounded-full" />
+            </div>
 
             <div className="space-y-4">
+              
               {/* Email Block with direct mailto link & copy button */}
-              <div className="bg-[#2b5685] p-5 sm:p-6 rounded-[8px] border border-[#66A3BF]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 card-subtle">
-                <div className="flex items-center gap-3.5">
-                  <div className="p-2.5 rounded-[8px] bg-[#3368A0] text-[#F2EFE7]">
-                    <Mail className="w-5 h-5 text-[#F2EFE7]" />
+              <div className="bg-[#2b5685] p-6 rounded-[8px] border border-[#66A3BF]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-5 card-subtle">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-[8px] bg-[#3368A0] border border-[#66A3BF]/60 text-[#F2EFE7] flex items-center justify-center shadow-xs">
+                    <Mail className="w-6 h-6 text-[#F2EFE7]" />
                   </div>
                   <div>
-                    <div className="text-xs uppercase text-[#C8DFDB] font-medium">
-                      Email
+                    <div className="font-mono text-xs uppercase text-[#C8DFDB] font-medium tracking-wider">
+                      Email Address
                     </div>
                     <a
                       href="mailto:ahmedyasser5902@gmail.com"
-                      className="text-base sm:text-lg font-semibold text-[#F2EFE7] hover:underline"
+                      className="text-base sm:text-xl font-bold text-[#F2EFE7] hover:text-white transition-colors"
                     >
                       ahmedyasser5902@gmail.com
                     </a>
@@ -431,29 +610,37 @@ export default function App() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="interactive-hover px-4 py-2 rounded-[8px] bg-[#66A3BF] text-[#F2EFE7] text-xs font-semibold hover:bg-[#5794b0] transition-all inline-flex items-center gap-1.5 self-start sm:self-auto"
+                  className="interactive-hover px-4.5 py-2.5 rounded-[8px] bg-[#66A3BF] text-[#F2EFE7] text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#5794b0] transition-all inline-flex items-center gap-2 self-start sm:self-auto shadow-xs"
                 >
-                  {copiedEmail ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
+                  {copiedEmail ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4" />}
+                  <span>{copiedEmail ? 'Copied to Clipboard' : 'Copy Email'}</span>
                 </button>
               </div>
 
               {/* LinkedIn & GitHub Links */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
                 {/* LinkedIn */}
                 <a
                   href="https://www.linkedin.com/in/ahmedd-yasserr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="interactive-hover bg-[#2b5685] p-5 rounded-[8px] border border-[#66A3BF]/40 flex items-center justify-between group card-subtle"
+                  className="interactive-hover bg-[#2b5685] p-6 rounded-[8px] border border-[#66A3BF]/40 flex items-center justify-between group card-subtle"
                 >
-                  <div className="flex items-center gap-3">
-                    <Linkedin className="w-5 h-5 text-[#F2EFE7]" />
-                    <span className="font-semibold text-base text-[#F2EFE7]">
-                      LinkedIn
-                    </span>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#3368A0] border border-[#66A3BF]/50 text-[#F2EFE7] flex items-center justify-center">
+                      <Linkedin className="w-5 h-5 text-[#F2EFE7]" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-base text-[#F2EFE7] group-hover:text-white transition-colors">
+                        LinkedIn
+                      </div>
+                      <div className="font-mono text-xs text-[#C8DFDB]">
+                        /in/ahmedd-yasserr
+                      </div>
+                    </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#F2EFE7] opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-5 h-5 text-[#C8DFDB] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </a>
 
                 {/* GitHub */}
@@ -461,23 +648,33 @@ export default function App() {
                   href="https://github.com/ahmedyasseerr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="interactive-hover bg-[#2b5685] p-5 rounded-[8px] border border-[#66A3BF]/40 flex items-center justify-between group card-subtle"
+                  className="interactive-hover bg-[#2b5685] p-6 rounded-[8px] border border-[#66A3BF]/40 flex items-center justify-between group card-subtle"
                 >
-                  <div className="flex items-center gap-3">
-                    <Github className="w-5 h-5 text-[#F2EFE7]" />
-                    <span className="font-semibold text-base text-[#F2EFE7]">
-                      GitHub
-                    </span>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-[8px] bg-[#3368A0] border border-[#66A3BF]/50 text-[#F2EFE7] flex items-center justify-center">
+                      <Github className="w-5 h-5 text-[#F2EFE7]" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-base text-[#F2EFE7] group-hover:text-white transition-colors">
+                        GitHub
+                      </div>
+                      <div className="font-mono text-xs text-[#C8DFDB]">
+                        @ahmedyasseerr
+                      </div>
+                    </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#F2EFE7] opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-5 h-5 text-[#C8DFDB] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </a>
+
               </div>
             </div>
 
             {/* Minimal footer note */}
-            <div className="mt-14 pt-6 border-t border-[#66A3BF]/30 text-xs text-[#C8DFDB] text-left">
-              &copy; {new Date().getFullYear()} Ahmed Yasser &mdash; Data Analyst
+            <div className="mt-16 pt-6 border-t border-[#66A3BF]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#C8DFDB]">
+              <span>&copy; {new Date().getFullYear()} Ahmed Yasser &mdash; Data Analyst</span>
+              <span>Built with React &amp; Tailwind CSS</span>
             </div>
+
           </div>
         </footer>
 
